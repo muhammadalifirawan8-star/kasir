@@ -384,24 +384,28 @@
     </div>
 
     <!-- ================= MODAL: QRIS DIGITAL PAYMENT ================= -->
-    <div id="qris-modal" class="hidden fixed inset-0 bg-slate-900/90 backdrop-blur-md z-[60] flex items-center justify-center p-4">
-        <div class="bg-slate-800 p-6 md:p-8 rounded-3xl w-full max-w-md shadow-2xl border border-slate-700 text-center relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 to-red-500"></div>
-            <h3 class="text-2xl font-extrabold text-white mb-2 mt-2">Scan QRIS</h3>
-            <p class="text-sm text-slate-400 mb-6">Arahkan kamera pelanggan ke layar ini.</p>
+    <div id="qris-modal" class="hidden fixed inset-0 bg-slate-900/95 backdrop-blur-md z-[60] flex items-center justify-center p-2 sm:p-4">
+        <div class="bg-slate-800 p-4 sm:p-6 rounded-3xl w-full max-w-lg sm:max-w-2xl shadow-2xl border border-slate-700 text-center relative overflow-hidden flex flex-col max-h-[95vh]">
+            <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 to-red-500 shrink-0"></div>
             
-            <div class="bg-white p-3 rounded-2xl mx-auto mb-6 shadow-xl relative group w-64 h-64 sm:w-80 sm:h-80 flex items-center justify-center">
-                <!-- GANTI src DI BAWAH INI DENGAN LINK/NAMA FILE GAMBAR QRIS ASLI ANDA -->
-                <img src="qris.jpg" alt="QRIS" class="w-full h-full rounded-xl object-contain" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=BELUM_ADA_QRIS'">
-                <div class="absolute inset-0 border-4 border-amber-500/50 rounded-2xl pointer-events-none scale-[1.03] opacity-50"></div>
+            <div class="flex-1 overflow-y-auto hide-scroll flex flex-col items-center justify-center">
+                <h3 class="text-xl sm:text-3xl font-extrabold text-white mb-1 mt-3">Scan QRIS</h3>
+                <p class="text-xs sm:text-sm text-slate-400 mb-4 sm:mb-6">Arahkan kamera pelanggan ke layar ini.</p>
+                
+                <!-- QRIS Container yang Super Besar & Responsif -->
+                <div class="bg-white p-2 sm:p-4 rounded-2xl mx-auto mb-4 sm:mb-6 shadow-xl relative group w-full max-w-[320px] sm:max-w-[450px] aspect-square flex items-center justify-center">
+                    <!-- GANTI src DI BAWAH INI DENGAN LINK/NAMA FILE GAMBAR QRIS ASLI ANDA -->
+                    <img src="qris.jpg" alt="QRIS" class="w-full h-full rounded-xl object-contain" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=BELUM_ADA_QRIS'">
+                    <div class="absolute inset-0 border-4 border-amber-500/50 rounded-2xl pointer-events-none scale-[1.02] sm:scale-[1.03] opacity-50"></div>
+                </div>
+                
+                <p class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-slate-400">Total Tagihan</p>
+                <div class="text-4xl sm:text-5xl font-extrabold text-amber-500 mb-4 sm:mb-8 tracking-tight" id="qris-amount">Rp 0</div>
             </div>
             
-            <p class="text-xs font-bold uppercase tracking-widest text-slate-400">Total Tagihan</p>
-            <div class="text-3xl sm:text-4xl font-extrabold text-amber-500 mb-8" id="qris-amount">Rp 0</div>
-            
-            <div class="flex gap-3">
-                <button onclick="cancelQris()" class="flex-1 bg-slate-700 text-white hover:bg-slate-600 py-4 rounded-xl font-bold transition-all">Kembali</button>
-                <button onclick="executeCheckoutAPI()" id="btn-qris-confirm" class="flex-[1.5] bg-blue-600 text-white hover:bg-blue-500 py-4 rounded-xl font-bold transition-all shadow-[0_4px_20px_rgba(37,99,235,0.4)] flex justify-center items-center">
+            <div class="flex gap-3 shrink-0 mt-auto w-full max-w-[450px] mx-auto">
+                <button onclick="cancelQris()" class="flex-1 bg-slate-700 text-white hover:bg-slate-600 py-3 sm:py-4 rounded-xl font-bold transition-all text-sm sm:text-base">Kembali</button>
+                <button onclick="executeCheckoutAPI()" id="btn-qris-confirm" class="flex-[1.5] bg-blue-600 text-white hover:bg-blue-500 py-3 sm:py-4 rounded-xl font-bold transition-all shadow-[0_4px_20px_rgba(37,99,235,0.4)] flex justify-center items-center text-sm sm:text-base">
                     Cek Pembayaran
                 </button>
             </div>
